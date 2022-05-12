@@ -1,0 +1,21 @@
+{
+
+  "manifest_version": 2,
+  "name": "toolbar-timer",
+  "version": "1.0",
+
+  "description": "blabla",
+
+  "icons": {
+    "48": "icons/toolbar-timer-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["toolbar-timer.js"]
+    }
+  ]
+
+}
+
