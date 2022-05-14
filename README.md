@@ -1,7 +1,7 @@
 # Motivation
 
-You probably know this situation: you sit in a meeting discussing some points
-and someone just don't comes to an end and the moderator
+You probably know this situation: you sit in a meeting, discussing some points
+and someone just don't come to an end and the moderator
 is not able (or too polite) to interrupt.     
 Now this extension comes to help by showing a timer
 for the speaking time.    
