@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "make-it-short",
-  "version": "1.0",
+  "version": "0.0.1",
 
-  "description": "blabla",
+  "description": "Provides a button to start and stop a timer indicating speaking time.",
 
   "icons": {
     "48": "icons/timer-48.png"
@@ -13,8 +13,14 @@
     "scripts": ["background.js"]
   },
 
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
 
   "browser_action": {
@@ -22,7 +28,13 @@
       "16": "icons/timer-16.png",
       "32": "icons/timer-32.png"
     }
-  }
+  },
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "make-it-short@banapple.de"
+    }
+  }
+  
 }
 

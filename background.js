@@ -1,8 +1,38 @@
 let running = false;
-let time = 40;
-let warn = 30;
+
+/* set some defaults for time and warn time in case the storage does not work */
+let time = 60;
+let warn = 10;
 let current;
 let timeout;
+
+function getValueFromStorage(key, updateFunction) {
+
+    function onGot(item) {
+        updateFunction(item[key]);
+    }
+    function onError(error) {
+        console.log(`Error: ${error}`);
+    }
+    let getting = browser.storage.sync.get(key);
+    getting.then(onGot, onError);
+}
+
+function updateValuesFromStorage(callback) {
+
+    getValueFromStorage("starttime", function(value) {
+        time = value;
+        console.log(`start time from storage: ${time}`)
+
+        getValueFromStorage("warntime", function(value) {
+            warn = value;
+            console.log(`warn time from storage: ${warn}`)
+
+            callback();
+        });
+    });
+    
+}
 
 function onClick() {
 
@@ -16,9 +46,11 @@ function onClick() {
         updatePage(null);
     } else {
         console.log("turn timer on");
-        running = true;
-        current = time;
-        updateTimer();                
+        updateValuesFromStorage(function() {
+            running = true;
+            current = time;
+            updateTimer();                
+        });        
     }
 }
 
