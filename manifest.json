@@ -1,21 +1,28 @@
 {
-
   "manifest_version": 2,
-  "name": "toolbar-timer",
+  "name": "make-it-short",
   "version": "1.0",
 
   "description": "blabla",
 
   "icons": {
-    "48": "icons/toolbar-timer-48.png"
+    "48": "icons/timer-48.png"
   },
 
-  "content_scripts": [
-    {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["toolbar-timer.js"]
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/timer-16.png",
+      "32": "icons/timer-32.png"
     }
-  ]
+  }
 
 }
 
