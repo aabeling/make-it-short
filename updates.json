@@ -1,0 +1,12 @@
+{
+    "addons": {
+      "make-it-short-sd@banapple.de": {
+        "updates": [
+          {
+            "version": "0.0.6",
+            "update_link": "https://github.com/aabeling/make-it-short/releases/download/v0.0.6/f72dd49a768143f89b34-0.0.6.xpi"
+          }
+        ]
+      }
+    }
+  }

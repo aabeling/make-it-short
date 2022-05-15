@@ -1,6 +1,6 @@
 function saveOptions(e) {
     console.log("saving options");
-    browser.storage.sync.set({
+    browser.storage.local.set({
         starttime: document.querySelector("#starttime").value,
         warntime: document.querySelector("#warntime").value
     });
@@ -14,12 +14,12 @@ function restoreOptions() {
     document.querySelector("#starttime").value = 60;
     document.querySelector("#warntime").value = 10;
 
-    var gettingItem = browser.storage.sync.get('starttime');
+    var gettingItem = browser.storage.local.get('starttime');
     gettingItem.then((res) => {
       document.querySelector("#starttime").value = res.starttime || '60';
     });
 
-    gettingItem = browser.storage.sync.get('warntime');
+    gettingItem = browser.storage.local.get('warntime');
     gettingItem.then((res) => {
       document.querySelector("#warntime").value = res.warntime || '10';
     });
