@@ -15,3 +15,21 @@ The start and warn time can be configured.
 # Open issues
 
 * the timer runs for the active tab. If the tab is changed the previous tab will not be updated.
+
+# Development
+
+(just a reminder for myself)
+
+* develop on branch main
+* increase the version number in manifest.json
+* merge to release with
+```
+git checkout release
+git merge --no-ff main
+git push
+```
+* tag and push the release with the same version number from manifest.json
+```
+git tag -a -m "v0.0.X" v0.0.X
+git push --tags
+```
