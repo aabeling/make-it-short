@@ -25,7 +25,7 @@ jobs:
         uses: kewisch/action-web-ext@v1
         with:
           cmd: lint
-          channel: listed
+          channel: unlisted
 
       - name: "web-ext build"
         id: web-ext-build
