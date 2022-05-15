@@ -6,25 +6,29 @@ let warn = 10;
 let current;
 let timeout;
 
-function getValueFromStorage(key, updateFunction) {
+function getValueFromStorage(key, defaultValue, updateFunction) {
 
     function onGot(item) {
+        if (item[key] == undefined) {
+            console.log(`value not found in storage: ${key}, using default: ${defaultValue}`);
+            item[key] = defaultValue;
+        }
         updateFunction(item[key]);
     }
     function onError(error) {
         console.log(`Error: ${error}`);
     }
-    let getting = browser.storage.sync.get(key);
+    let getting = browser.storage.local.get(key);
     getting.then(onGot, onError);
 }
 
 function updateValuesFromStorage(callback) {
 
-    getValueFromStorage("starttime", function(value) {
+    getValueFromStorage("starttime", time, function(value) {
         time = value;
         console.log(`start time from storage: ${time}`)
 
-        getValueFromStorage("warntime", function(value) {
+        getValueFromStorage("warntime", warn, function(value) {
             warn = value;
             console.log(`warn time from storage: ${warn}`)
 
@@ -54,6 +58,13 @@ function onClick() {
     }
 }
 
+/**
+ * Sets the badge text to the current timer value.
+ * Updates the current timer value.
+ * Updates the badge's background color and 
+ * updates the page.
+ * Schedules the next update in a second.
+ */
 function updateTimer() {
 
     current--;
@@ -74,6 +85,10 @@ function updateTimer() {
     }
 }
 
+/**
+ * Indicates the current timer's status on the page.
+ * Shows a border in green, orange or red.
+ */
 function updatePage(color) {
 
     if (color != null) {

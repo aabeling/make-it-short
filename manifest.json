@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "make-it-short",
-  "version": "0.0.6",
+  "version": "0.0.7",
 
   "description": "Provides a button to start and stop a timer indicating speaking time.",
 
