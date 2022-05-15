@@ -31,5 +31,7 @@ jobs:
 
       - name: "Create Release"
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           files: ${{ steps.web-ext-sign.outputs.target }}
