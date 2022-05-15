@@ -23,6 +23,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Zip to XPI
-        run: zip -r -FS make-it-short.xpi * --exclude '*.git*'
+      - name: "web-ext lint"
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: lint
+          channel: listed
+
+      - name: "web-ext build"
+        id: web-ext-build
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: build
+          filename: "{name}-{version}.xpi"
+
+      - name: "Upload Artifact"
+        uses: actions/upload-artifact@master
+        with:
+          name: target.xpi
+          path: ${{ steps.web-ext-build.outputs.target }}
